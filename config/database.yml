@@ -23,8 +23,8 @@ default: &default
 
 development:
   <<: *default
-  database: microverse-members-club
-  username: microverse-members-club
+  database: members_club
+  username: members_club
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

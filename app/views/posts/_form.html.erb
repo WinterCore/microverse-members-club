@@ -1,22 +1,10 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for(@post) do | f | %>
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_field :body %>
+    <div class="control">
+      <%= f.label :body, class: "label" %>
+      <%= f.text_area :body, class: "textarea" %>
+    </div>
+    <%= render 'partials/input_error', resource: @post, key: :body %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.button 'Submit', class: 'button is-danger' %>
 <% end %>

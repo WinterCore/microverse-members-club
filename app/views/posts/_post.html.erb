@@ -1,0 +1,27 @@
+<div class="box">
+<article class="media">
+  <div class="media-left">
+    <figure class="image is-64x64">
+      <%= gravatar_image_tag(post.user.email) %>
+    </figure>
+  </div>
+  <div class="media-content">
+    <div class="content">
+      <strong>@<%= post.user.username %></strong><br />
+      <p><%= post.body %></p>
+    </div>
+    <nav class="level">
+      <div class="level-left is-mobile">
+        <% if user_signed_in? && current_user.id == post.user_id %>
+          <%= link_to edit_post_path(post) do %>
+            <span class="icon has-text-danger"><i class="fas fa-edit" aria-hidden="true"></i></span>
+          <% end %>
+          <%= link_to post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } do %>
+            <span class="icon has-text-danger"><i class="far fa-trash-alt" aria-hidden="true"></i></span>
+          <% end %>
+        <% end %>
+      </div>
+    </nav>
+  </div>
+</article>
+</div>
