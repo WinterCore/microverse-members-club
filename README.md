@@ -33,7 +33,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://microverse-members-only.herokuapp.com/)
+[Live Demo Link](https://members-club.upperdown.me)
 
 
 <!-- INSTALLATION -->
