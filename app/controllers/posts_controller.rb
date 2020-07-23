@@ -3,8 +3,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
   before_action :set_posts, only: %i[index create edit]
 
-  # GET /posts
-  # GET /posts.json
   def index
     @post = Post.new
   end
@@ -18,13 +16,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
     render 'index'
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = current_user.posts.new(post_params)
 
@@ -35,8 +30,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     if @post.update(post_params)
       redirect_to posts_path, notice: 'Post was successfully updated.'
@@ -45,8 +38,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
