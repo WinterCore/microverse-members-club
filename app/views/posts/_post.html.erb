@@ -2,24 +2,17 @@
 <article class="media">
   <div class="media-left">
     <figure class="image is-64x64">
-      <%= gravatar_image_tag(post.user.email) %>
+      <%= user_signed_in? ? gravatar_image_tag(post.user.email, class: "is-rounded") : image_tag("benderass.png", class: "is-rounded") %>
     </figure>
   </div>
   <div class="media-content">
     <div class="content">
-      <strong>@<%= post.user.username %></strong><br />
+      <strong>@<%= user_signed_in? ? post.user.username : 'Anonymous' %></strong><br />
       <p><%= post.body %></p>
     </div>
     <nav class="level">
       <div class="level-left is-mobile">
-        <% if user_signed_in? && current_user.id == post.user_id %>
-          <%= link_to edit_post_path(post) do %>
-            <span class="icon has-text-danger"><i class="fas fa-edit" aria-hidden="true"></i></span>
-          <% end %>
-          <%= link_to post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } do %>
-            <span class="icon has-text-danger"><i class="far fa-trash-alt" aria-hidden="true"></i></span>
-          <% end %>
-        <% end %>
+        <%= render 'postlinks', post: post %>
       </div>
     </nav>
   </div>
