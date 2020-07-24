@@ -1,0 +1,7 @@
+<% if resource.errors.has_key?(key) %>
+  <% resource.errors.full_messages_for(key).each do | error | %>
+    <div class="has-text-danger">
+      <%= error %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <article class="media box">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <%= gravatar_image_tag(current_user.email, class: "is-rounded") %>
+      </p>
+    </figure>
+    <div class="media-content">
+      <%= form_for(@post) do | f | %>
+      <div class="field">
+        <div class="control">
+          <%= f.label :body, class: "label" %>
+          <%= f.text_area :body, class: "textarea" %>
+        </div>
+        <%= render 'partials/input_error', resource: @post, key: :body %>
+        </div>
+        <%= f.button 'Submit', class: 'button is-danger' %>
+      <% end %>
+    </div>
+  </article>
+<% end %>

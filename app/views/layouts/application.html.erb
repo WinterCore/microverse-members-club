@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mmm</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <% if flash[:notice] %>
+    <div class="notification is-primary global-notification">
+      <p class="notice"><%= flash[:notice] %></p>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="notification is-warning global-notification">
+      <p class="alert"><%= flash[:alert] %></p>
+    </div>
+  <% end %>
+  <nav class="navbar has-background-danger">
+    <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do %>
+        <h1 class="title is-5 has-text-weight-bold has-text-white">Secret Members Club</h1>
+      <% end %>
+      <div class="navbar-burger burger" data-target="navbarExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div id="navbarExample" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% unless user_signed_in? %>
+              <%= link_to 'Sign up', new_user_registration_path, class: 'button is-danger' %>
+              <%= link_to 'Sign in', new_user_session_path, class: 'button is-danger' %>
+            <% else %>
+              <%= link_to 'Profile', edit_user_registration_path, class: 'button is-danger' %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'button is-dange' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <body>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<div class="box">
+<article class="media">
+  <div class="media-left">
+    <figure class="image is-64x64">
+      <%= user_signed_in? ? gravatar_image_tag(post.user.email, class: "is-rounded") : image_tag("benderass.png", class: "is-rounded") %>
+    </figure>
+  </div>
+  <div class="media-content">
+    <div class="content">
+      <strong>@<%= user_signed_in? ? post.user.username : 'Anonymous' %></strong><br />
+      <p><%= post.body %></p>
+    </div>
+    <nav class="level">
+      <div class="level-left is-mobile">
+        <%= render 'postlinks', post: post %>
+      </div>
+    </nav>
+  </div>
+</article>
+</div>
