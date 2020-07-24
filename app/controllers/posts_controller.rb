@@ -47,6 +47,7 @@ class PostsController < ApplicationController
 
   def authorize_user
     return unless @post.user_id != current_user.id
+
     flash[:alert] = 'You\'re not supposed to be here'
     redirect_to posts_path
   end
